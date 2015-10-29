@@ -8,7 +8,3 @@ class CreateComments < ActiveRecord::Migration
     end
   end
 end
-
-class Comment < ActiveRecord::Base
-  belongs_to :post
-end

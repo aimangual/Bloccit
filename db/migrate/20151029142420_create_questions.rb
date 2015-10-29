@@ -9,7 +9,3 @@ class CreateQuestions < ActiveRecord::Migration
     end
   end
 end
-
-class Question < ActiveRecord::Base
-  has_many :answers
-end

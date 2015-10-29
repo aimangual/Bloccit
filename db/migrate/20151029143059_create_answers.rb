@@ -8,7 +8,3 @@ class CreateAnswers < ActiveRecord::Migration
     end
   end
 end
-
-class Answer < ActiveRecord::Base
-  belongs_to :question
-end

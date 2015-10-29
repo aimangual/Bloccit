@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
 
 # Create Posts
@@ -14,6 +7,7 @@ Post.create!(
  body:   Faker::Lorem.paragraph
 )
 end
+Post.create(title: "Assignment 32", body: "Add a post with a unique title and body")
 posts = Post.all
 
 # Create Comments
@@ -23,6 +17,7 @@ Comment.create!(
  body: Faker::Lorem.paragraph
 )
 end
+Comment.create(body: "Create a unique comment and confirm that it is also only seeded once")
 
 puts "Seed finished"
 puts "#{Post.count} posts created"

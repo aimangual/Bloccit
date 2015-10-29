@@ -8,7 +8,3 @@ class CreatePosts < ActiveRecord::Migration
     end
   end
 end
-
-class Post < ActiveRecord::Base
-  has_many :comments
-end

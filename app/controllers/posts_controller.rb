@@ -12,10 +12,9 @@ class PostsController < ApplicationController
     @post = Post.new
     authorize @post
   end
-  
+
   def create
-    @post = Post.new(params.require(:post).permit(:title, :body))
-    @post.user = current_user
+    @post = current_user.posts.build(params.require(:post).permit(:title, :body))
     authorize @post
     if @post.save
       flash[:notice] = "Post was saved."
@@ -28,6 +27,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    puts @post, current_user.role
     authorize @post
   end
 

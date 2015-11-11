@@ -4,6 +4,7 @@ Bloccit::Application.routes.draw do
   
   resources :topics do
     resources :posts, except: [:index]
+      resources :summaries, only: [:new, :show]
   end
 
   get 'about' => 'welcome#about'

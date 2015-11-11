@@ -1,0 +1,12 @@
+<h1><%= @summary.title %></h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <p><%= @summary.body %></p>
+  </div>
+  <div class="col-md-4">
+    <% if policy(@summary).edit? %>
+      <%= link_to "Edit", edit_topic_post_path(@topic, @summary), class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

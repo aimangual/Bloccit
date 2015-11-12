@@ -10,6 +10,7 @@ Bloccit::Application.routes.draw do
   end
 
   get 'about' => 'welcome#about'
-
+  get 'contact' => 'welcome#contact'
+  
   root to: 'welcome#index'
 end

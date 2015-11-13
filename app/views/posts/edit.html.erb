@@ -12,4 +12,15 @@
   <div class="col-md-8">
     <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
   </div>
+    <% if current_user.image? %>
+  <div class="form-group">
+    <p>Current image</p>
+    <%= image_tag( current_user.image.profile.url ) %>
+  </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
 </div>

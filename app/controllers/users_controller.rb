@@ -14,12 +14,6 @@ class UsersController < ApplicationController
   private
  
   def user_params
-<<<<<<< HEAD
     params.require(:user).permit(:name, :avatar)
   end
 end
-=======
-    params.require(:user).permit(:name)
-  end
-end
->>>>>>> checkpoint-40-topics-and-posts

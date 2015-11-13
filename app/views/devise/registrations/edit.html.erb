@@ -39,6 +39,7 @@
         <%= f.label :name %>
         <%= f.text_field :name, class: 'form-control', placeholder: "Enter name", autofocus: true %>
       </div>
+<<<<<<< HEAD
       <% if current_user.avatar? %>
         <div class="form-group">
           <p>Current avatar</p>
@@ -50,6 +51,8 @@
         <%= f.file_field :avatar %>
         <%= f.hidden_field :avatar_cache %>
       </div>
+=======
+>>>>>>> checkpoint-40-topics-and-posts
       <div class="form-group">
         <%= f.submit "Update", class: 'btn btn-success' %>
       </div>

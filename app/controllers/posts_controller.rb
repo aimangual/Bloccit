@@ -47,6 +47,7 @@ class PostsController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   def destroy
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
@@ -61,6 +62,8 @@ class PostsController < ApplicationController
     end
   end
 
+=======
+>>>>>>> checkpoint-40-topics-and-posts
   private
 
   def post_params

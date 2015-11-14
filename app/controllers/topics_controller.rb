@@ -42,7 +42,6 @@ class TopicsController < ApplicationController
     end
   end
   
-<<<<<<< HEAD
   def destroy
     @topic = Topic.find(params[:id])
     authorize @topic
@@ -53,11 +52,14 @@ class TopicsController < ApplicationController
       flash[:error] = "There was an error deleting the topic."
       render :show
     end
-=======
+  end
+
   private
   
   def topic_params
     params.require(:topic).permit(:title, :body)
->>>>>>> checkpoint-40-topics-and-posts
+
   end
 end
+
+

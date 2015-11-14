@@ -1,23 +1,8 @@
 <% if current_user %>
   <h4>Add a comment:</h4>
-  <%= form_for [topic, post, post.comment.new] do |f| %>
-  <% if comment.errors.any? %>
-    <div class="alert alert-danger">
-      <h4>There are <%= pluralize(comment.errors.count, "error") %>.</h4>
-      <ul>
-        <% comment.errors.full_message.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %> 
-  
-  <%= form_group_tag(comment.errors[:body]) do %>
+  <%= form_for [@post, @post.comments.build] do |f| %>
     <%= f.label :body %>
-    <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter comment body" %>
+    <%= f.text_field :body %>
+    <%= f.submit %>
   <% end %>
-  
-  <div class = "form-group">
-    <%= f.submit "Save", class: 'btn btn-success' %>
-  </div>
 <% end %>

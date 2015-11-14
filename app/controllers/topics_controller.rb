@@ -41,12 +41,14 @@ class TopicsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @topic = Topic.find(params[:id])
+    name = @topic.name
     authorize @topic
+    
     if @topic.destroy
-      flash[:notice] = "\"#{@topic.name}\" was deleted successfully."
+      flash[:notice] = "\"#{name}\" was deleted successfully."
       redirect_to topics_path
     else
       flash[:error] = "There was an error deleting the topic."
@@ -55,11 +57,8 @@ class TopicsController < ApplicationController
   end
 
   private
-  
-  def topic_params
-    params.require(:topic).permit(:title, :body)
 
+  def topic_params
+    params.require(:topic).permit(:name, :description, :public)
   end
 end
-
-

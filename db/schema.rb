@@ -13,28 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20151115214709) do
 
-  create_table "advertisements", force: :cascade do |t|
-    t.string   "title"
-    t.text     "copy"
-    t.integer  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "answers", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "answers", ["post_id"], name: "index_answers_on_post_id"
-
   create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
   end
 
@@ -54,8 +37,8 @@ ActiveRecord::Schema.define(version: 20151115214709) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "topic_id"
     t.string   "image"
@@ -64,14 +47,6 @@ ActiveRecord::Schema.define(version: 20151115214709) do
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
-
-  create_table "questions", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.boolean  "resolved"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "topics", force: :cascade do |t|
     t.string   "name"
@@ -108,10 +83,11 @@ ActiveRecord::Schema.define(version: 20151115214709) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "votes", force: :cascade do |t|
+    t.integer  "value"
     t.integer  "user_id"
     t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "votes", ["post_id"], name: "index_votes_on_post_id"

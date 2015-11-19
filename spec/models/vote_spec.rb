@@ -1,6 +1,9 @@
 require 'rails_helper'
 
-describe Vote do
+describe Vote do 
+
+  include TestFactories
+
   describe "validations" do
     describe "value validation" do
       it "only allows -1 or 1 as values" do
@@ -15,7 +18,7 @@ describe Vote do
       end
     end
   end
-  
+
   describe 'after_save' do
     it "calls `Post#update_rank` after save" do
       post = associated_post

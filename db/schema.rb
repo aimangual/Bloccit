@@ -83,11 +83,10 @@ ActiveRecord::Schema.define(version: 20151115214709) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "value"
     t.integer  "user_id"
     t.integer  "post_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "votes", ["post_id"], name: "index_votes_on_post_id"

@@ -13,7 +13,7 @@ class Comment < ActiveRecord::Base
   def send_favorite_emails
     post.favorites.each do |favorite|
       if should_receive_update_for?(favorite)
-        FavoriteMailer.new_comment(favorite.user, post, self).deliver
+        FavoriteMailer.new_comment(favorite.user, post, self).deliver_now
       end
     end
   end

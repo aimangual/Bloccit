@@ -12,10 +12,6 @@ require 'faker'
 end
 users = User.all
 
-<<<<<<< HEAD
-# Create Topics
-=======
->>>>>>> checkpoint-50-mocking-with-rspec
 15.times do
   Topic.create(
     name:         Faker::Lorem.sentence,

@@ -11,24 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119225301) do
-
-  create_table "advertisements", force: :cascade do |t|
-    t.string   "title"
-    t.text     "copy"
-    t.integer  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "answers", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "answers", ["post_id"], name: "index_answers_on_post_id"
+ActiveRecord::Schema.define(version: 20151120002955) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -100,11 +83,11 @@ ActiveRecord::Schema.define(version: 20151119225301) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "votes", force: :cascade do |t|
+    t.integer  "value"
     t.integer  "user_id"
     t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "votes", ["post_id"], name: "index_votes_on_post_id"

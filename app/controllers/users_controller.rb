@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @comments = @user.comments
   end
 
+  def index
+    @users = User.top_rated.paginate(page: params[:page], per_page: 10)
+  end
+
   def update
     if current_user.update_attributes(user_params)
       flash[:notice] = "User information updated"

@@ -1,46 +1,43 @@
 class CommentsController < ApplicationController
-
-  respond_to :html, :js
-
+  respond_to :html
   def create
     @post = Post.find(params[:post_id])
-    @comment = current_user.comments.new(comment_params)
+    @comment = current_user.comments.new( comment_params) 
     @comment.post = @post
     @new_comment = Comment.new
 
     authorize @comment
 
     if @comment.save
-      flash[:notice] = "Comment was created."
+      flash[:notice] = "Comment was saved."
     else
-      flash[:error] = "Comment failed to save."
+      flash[:error] = "There was an error saving the comment. Please try again."
     end
-
+    
     respond_with(@comment) do |format|
-      format.html { redirect_to [@post.topic, @post] }
+      format.html 
+      format.js
     end
   end
 
   def destroy
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    authorize @comment
 
+    authorize @comment
     if @comment.destroy
-      flash[:notice] = "Comment was removed."
+      flash[:notice] = "Comment was removed"
     else
-      flash[:error] = "Comment couldn't be deleted. Try again."
+      flash[:error] = "Comment could not be deleted. Try again."
     end
 
-    respond_with(@comment) do |format|
-      format.html{ redirect_to [@post.topic, @post] }
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
-
-  private
 
   def comment_params
     params.require(:comment).permit(:body)
   end
-
 end
